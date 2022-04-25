@@ -1,7 +1,9 @@
 <x-guest-layout>
-    <ul>
+
+    <ol class="pl-5 list-decimal">
         @foreach($hacks as $hack)
-            <li>{{ $hack->title }}</li>
+            <a href="{{route('hack.show', $hack)}}"> <li>{{ $hack->title }} </li> </a>
         @endforeach
-    </ul>
+    </ol>
+
 </x-guest-layout>
