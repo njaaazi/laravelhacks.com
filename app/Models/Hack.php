@@ -9,4 +9,9 @@ class Hack extends Model
 {
     public $guarded = [];
     use HasFactory;
+
+    public function path()
+    {
+        return "hacks/$this->id";
+    }
 }
