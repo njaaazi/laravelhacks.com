@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\GetAllHacksController;
-use App\Http\Controllers\SubmitHacksController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CreateHacksController;
+use App\Http\Controllers\GetAllHacksController;
+use App\Http\Controllers\GetSingleHackController;
+use App\Http\Controllers\SubmitHacksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::get('/', GetAllHacksController::class)->name('home');
+Route::get('/hacks/{hack}', GetSingleHackController::class)->name('hack.show');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/submit', CreateHacksController::class)->name('hack.create');
+    Route::post('/submit', SubmitHacksController::class)->name('hack.submit');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-
-Route::get('/', GetAllHacksController::class);
-Route::post('/hacks', SubmitHacksController::class);
-
-
 require __DIR__.'/auth.php';
-
-
