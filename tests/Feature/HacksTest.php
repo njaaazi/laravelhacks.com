@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class SubmitTest extends TestCase
+class HacksTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -51,7 +51,17 @@ class SubmitTest extends TestCase
         $attributes = Hack::factory()->raw(['text' => '']);
 
         $this->post('/hacks', $attributes)->assertSessionHasErrors('text');
+    }
 
+    /** @test */
+    public function a_user_can_view_a_hack()
+    {
+        $this->withoutExceptionHandling();
+
+        $hack = Hack::factory()->create();
+
+        $this->get($hack->path())
+            ->assertSee($hack->title);
     }
 
 }
