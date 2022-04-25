@@ -2,19 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreHackRequest;
 use App\Models\Hack;
-use Illuminate\Http\Request;
 
 class SubmitHacksController
 {
-    public function __invoke(Request $request)
+    public function __invoke(StoreHackRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'url'   => 'url',
-            'text'  => 'required'
-        ]);
-
         Hack::create([
             'title' => $request->title,
             'url'   => $request->url,
