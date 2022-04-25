@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hack extends Model
 {
-    public $guarded = [];
     use HasFactory;
+    public $guarded = [];
 
     public function path()
     {

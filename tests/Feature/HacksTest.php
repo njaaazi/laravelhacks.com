@@ -7,7 +7,8 @@ use Tests\TestCase;
 
 class HacksTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use RefreshDatabase;
+    use WithFaker;
 
     /** @test */
     public function user_can_submit_a_new_hack()
@@ -18,7 +19,7 @@ class HacksTest extends TestCase
         $attributes = [
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
-            'text' => $this->faker->paragraph
+            'text' => $this->faker->paragraph,
         ];
 
         //act
@@ -63,5 +64,4 @@ class HacksTest extends TestCase
         $this->get($hack->path())
             ->assertSee($hack->title);
     }
-
 }

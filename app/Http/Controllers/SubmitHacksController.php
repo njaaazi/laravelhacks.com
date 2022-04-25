@@ -11,8 +11,8 @@ class SubmitHacksController
     {
         Hack::create([
             'title' => $request->title,
-            'url'   => $request->url,
-            'text'  => $request->text
+            'url' => $request->url,
+            'text' => $request->text,
         ]);
 
         return redirect('/');

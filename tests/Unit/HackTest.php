@@ -16,5 +16,4 @@ class HackTest extends TestCase
         $hack = Hack::factory()->create();
         $this->assertSame($hack->path(), 'hacks/' . $hack->id);
     }
-
 }
