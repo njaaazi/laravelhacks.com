@@ -16,11 +16,16 @@
                         {{ __('Submit') }}
                     </x-nav-link>
 
+                </div>
+            </div>
+
+            @guest
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('Login') }}
                     </x-nav-link>
                 </div>
-            </div>
+            @endguest
 
             @auth
 
@@ -74,9 +79,12 @@
             <x-responsive-nav-link :href="route('hack.create')" :active="request()->routeIs('hack.create')">
                 {{ __('Submit') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                {{ __('Login') }}
-            </x-responsive-nav-link>
+
+            @guest
+                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+            @endguest
         </div>
 
         @auth
