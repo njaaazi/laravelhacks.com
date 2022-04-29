@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Hack;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -15,17 +16,17 @@ class HacksTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        //arrange
         $attributes = [
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
             'text' => $this->faker->paragraph,
         ];
 
-        //act
-        $this->post('/hacks', $attributes)->assertRedirect('/');
+        $user = User::factory()->create();
 
-        //assert
+        $this->actingAs($user)
+            ->post(route('hack.submit'), $attributes)->assertRedirect('/');
+
         $this->assertDatabaseHas('hacks', $attributes);
         $this->get('/')->assertSee($attributes['title']);
     }
@@ -33,25 +34,34 @@ class HacksTest extends TestCase
     /** @test */
     public function a_hack_requires_a_title()
     {
+        $user = User::factory()->create();
+
         $attributes = Hack::factory()->raw(['title' => '']);
 
-        $this->post('/hacks', $attributes)->assertSessionHasErrors('title');
+        $this->actingAs($user)
+            ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('title');
     }
 
     /** @test */
     public function a_hack_has_a_valid_url()
     {
+        $user = User::factory()->create();
+
         $attributes = Hack::factory()->raw(['url' => 'googledotcom']);
 
-        $this->post('/hacks', $attributes)->assertSessionHasErrors('url');
+        $this->actingAs($user)
+            ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('url');
     }
 
     /** @test */
     public function a_hack_requires_a_text()
     {
+        $user = User::factory()->create();
+
         $attributes = Hack::factory()->raw(['text' => '']);
 
-        $this->post('/hacks', $attributes)->assertSessionHasErrors('text');
+        $this->actingAs($user)
+            ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('text');
     }
 
     /** @test */
