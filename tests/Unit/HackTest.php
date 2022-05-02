@@ -14,6 +14,16 @@ class HackTest extends TestCase
     public function it_has_a_path()
     {
         $hack = Hack::factory()->create();
-        $this->assertSame($hack->path(), 'hacks/' . $hack->id);
+        $this->assertSame($hack->path(), 'hacks/' . $hack->slug);
+    }
+
+    /** @test */
+    public function it_has_a_slug()
+    {
+          $hack = Hack::factory()->create([
+              'title' => 'My first hack'
+          ]);
+
+          $this->assertSame($hack->slug, 'my-first-hack');
     }
 }
