@@ -20,10 +20,10 @@ class HackTest extends TestCase
     /** @test */
     public function it_has_a_slug()
     {
-          $hack = Hack::factory()->create([
-              'title' => 'My first hack'
+        $hack = Hack::factory()->create([
+              'title' => 'My first hack',
           ]);
 
-          $this->assertSame($hack->slug, 'my-first-hack');
+        $this->assertSame($hack->slug, 'my-first-hack');
     }
 }
