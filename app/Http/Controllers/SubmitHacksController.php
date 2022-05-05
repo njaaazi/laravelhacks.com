@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreHackRequest;
-use App\Models\Hack;
 
 class SubmitHacksController
 {

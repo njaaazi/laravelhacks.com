@@ -82,6 +82,4 @@ class HacksTest extends TestCase
 
         $this->post(route('hack.submit'), $attributes)->assertRedirect('login');
     }
-
-
 }
