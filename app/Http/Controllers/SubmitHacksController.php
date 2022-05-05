@@ -9,7 +9,7 @@ class SubmitHacksController
 {
     public function __invoke(StoreHackRequest $request)
     {
-        Hack::create([
+        auth()->user()->hacks()->create([
             'title' => $request->title,
             'url' => $request->url,
             'text' => $request->text,

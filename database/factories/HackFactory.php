@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,6 +21,9 @@ class HackFactory extends Factory
             'title' => $this->faker->sentence(),
             'url'   => $this->faker->url,
             'text'  => $this->faker->text,
+            'user_id' => function () {
+                return User::factory()->create()->id;
+            }
         ];
     }
 }
