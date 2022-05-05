@@ -74,4 +74,14 @@ class HacksTest extends TestCase
         $this->get($hack->path())
             ->assertSee($hack->title);
     }
+
+    /** @test */
+    public function only_authenticated_users_can_submit_a_new_hack()
+    {
+        $attributes = Hack::factory()->raw();
+
+        $this->post(route('hack.submit'), $attributes)->assertRedirect('login');
+    }
+
+
 }
