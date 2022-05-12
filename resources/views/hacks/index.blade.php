@@ -4,8 +4,8 @@
             @foreach($hacks as $hack)
                 <li>
                     <div class="grid grid-cols-12 md:flex items-center space-x-1">
-                        <span class="col-span-1 text-center text-xs border-red-500 border h-4 w-4 hover:bg-red-500 hover:text-white cursor-pointer">
-                            H
+                        <span class="font-bold col-span-1 text-center text-xs border-red-500 border h-5 w-5 hover:bg-red-500 hover:text-white cursor-pointer">
+                            H<sub>+</sub>
                         </span>
                         <a class="col-span-10 text-gray-900" href="{{route('hack.show', $hack)}}"> {{ $hack->title }} </a>
                         <a class="col-span-1" href="{{$hack->url}}" target="_blank">
