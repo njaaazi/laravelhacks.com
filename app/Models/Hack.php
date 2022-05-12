@@ -29,6 +29,11 @@ class Hack extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     /**
      * Get the route key for the model.
      *

@@ -3,6 +3,9 @@
 namespace Tests\Unit;
 
 use App\Models\Hack;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -25,5 +28,13 @@ class HackTest extends TestCase
           ]);
 
         $this->assertSame($hack->slug, 'my-first-hack');
+    }
+
+    /** @test */
+    public function a_hack_belongs_to_a_user()
+    {
+        $hack = Hack::factory()->create();
+
+        $this->assertInstanceOf(User::class, $hack->user);
     }
 }
