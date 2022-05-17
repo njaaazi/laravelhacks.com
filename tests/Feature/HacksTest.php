@@ -53,7 +53,6 @@ class HacksTest extends TestCase
             ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('url');
     }
 
-
     /** @test */
     public function a_user_can_view_a_hack()
     {
@@ -79,7 +78,7 @@ class HacksTest extends TestCase
         $this->withoutExceptionHandling();
 
         $hack = Hack::factory()->create([
-            'text' => 'This is my test tile'
+            'text' => 'This is my test tile',
         ]);
 
         $this->get($hack->path())
