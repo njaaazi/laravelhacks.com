@@ -53,16 +53,6 @@ class HacksTest extends TestCase
             ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('url');
     }
 
-    /** @test */
-    public function a_hack_requires_a_text()
-    {
-        $user = User::factory()->create();
-
-        $attributes = Hack::factory()->raw(['text' => '']);
-
-        $this->actingAs($user)
-            ->post(route('hack.submit'), $attributes)->assertSessionHasErrors('text');
-    }
 
     /** @test */
     public function a_user_can_view_a_hack()
@@ -81,5 +71,18 @@ class HacksTest extends TestCase
         $attributes = Hack::factory()->raw();
 
         $this->post(route('hack.submit'), $attributes)->assertRedirect('login');
+    }
+
+    /** @test */
+    public function a_user_can_view_a_hack_text_if_entered()
+    {
+        $this->withoutExceptionHandling();
+
+        $hack = Hack::factory()->create([
+            'text' => 'This is my test tile'
+        ]);
+
+        $this->get($hack->path())
+            ->assertSee($hack->text);
     }
 }
