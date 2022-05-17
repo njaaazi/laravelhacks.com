@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('url');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }

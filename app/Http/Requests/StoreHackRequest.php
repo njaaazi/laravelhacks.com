@@ -26,7 +26,6 @@ class StoreHackRequest extends FormRequest
         return [
             'title' => 'required',
             'url' => 'url',
-            'text' => 'required',
         ];
     }
 }

@@ -1,5 +1,7 @@
 <x-guest-layout>
-        <x-auth-card>
+        <div class="flex flex-col sm:justify-center items-center my-8 sm:pt-0">
+
+            <h1>Create a new hack</h1>
 
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -28,7 +30,7 @@
                 <div class="mt-4">
                     <x-label for="url" :value="__('Text')" />
 
-                    <x-input id="text" class="block mt-1 w-full" type="text" name="text" :value="old('text')" required autofocus />
+                    <x-textarea id="text" class="block mt-1 w-full" type="text" name="text" cols="30" rows="10" :value="old('text')" autofocus />
                 </div>
 
 
@@ -39,5 +41,5 @@
                 </div>
             </form>
 
-        </x-auth-card>
+        </div>
 </x-guest-layout>
