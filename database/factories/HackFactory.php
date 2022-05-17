@@ -20,7 +20,6 @@ class HackFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'url'   => $this->faker->url,
-            'text'  => $this->faker->text,
             'user_id' => function () {
                 return User::factory()->create()->id;
             }
