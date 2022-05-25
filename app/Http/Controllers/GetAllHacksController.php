@@ -8,7 +8,7 @@ class GetAllHacksController
 {
     public function __invoke()
     {
-        $hacks = Hack::all();
+        $hacks = Hack::with('user')->get();
 
         return view('hacks.index', compact('hacks'));
     }
