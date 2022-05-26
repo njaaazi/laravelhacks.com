@@ -84,5 +84,4 @@ class HacksTest extends TestCase
         $this->get($hack->path())
             ->assertSee($hack->text);
     }
-
 }

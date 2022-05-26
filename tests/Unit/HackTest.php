@@ -40,10 +40,10 @@ class HackTest extends TestCase
     /** @test */
     public function a_hack_has_many_comments()
     {
-          $hack = Hack::factory()
+        $hack = Hack::factory()
               ->hasComments(3)
               ->create();
 
-          $this->assertInstanceOf(Collection::class, $hack->comments);
+        $this->assertInstanceOf(Collection::class, $hack->comments);
     }
 }
